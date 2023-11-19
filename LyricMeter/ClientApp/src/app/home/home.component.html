@@ -1,0 +1,40 @@
+<h1>Lyric Meter</h1>
+<input type="text" id="artis" name="artis" placeholder="Type artist name" (keyup)="onArtistSearch(artistSearch.value)"
+    aria-label="search artist" #artistSearch />
+
+<ul>
+    <ng-container *ngFor="let artist of artists.artists">
+        <li *ngIf="isTypePersonOrBand(artist.type)" class="pointer" (click)="onGotoArtistDetail(artist)">
+            {{artist.name}} [ {{artist.type}} ] {{artist?.country}}
+        </li>
+    </ng-container>
+</ul>
+
+<div *ngIf="isErrored">
+    {{error}}
+</div>
+
+<div *ngIf="songs.length && selectedArtist">
+    <div class="count-words">
+        <button (click)="onCountWords()" [disabled]="isCountingWords">
+            Calculate Average Word Count
+        </button>
+        <div *ngIf="isCountingWords" class="spinner"></div>
+    </div>
+
+    <div *ngIf="averageWordCount" class="average-word-panel">
+        <span>Average Word Count: {{ averageWordCount | number:'1.0-0' }}</span>
+        <a (click)="onShowMeMore()" class="show-more-link">show me more</a>
+    </div>    
+    
+    <h2>{{selectedArtist}}' Songs Found:</h2>
+    
+    <ol>
+        <li *ngFor="let song of songs">{{song.title}}</li>
+    </ol>
+</div>
+<h2 *ngIf="!songs.length && selectedArtist">
+    No song found for {{selectedArtist}}
+</h2>
+
+<div class="spinner" *ngIf="isLoading"></div>

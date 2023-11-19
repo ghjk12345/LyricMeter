@@ -1,0 +1,80 @@
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border-left-color: #09f;
+
+  animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner.small {
+  width: 10px;
+  height: 10px;
+  border-width: 2px;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.average-word-panel {
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 4px;
+  margin: 10px 0;
+}
+
+.average-word-panel span {
+  margin-right: 15px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.show-more-link {
+  color: #336699;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.show-more-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+ol {
+  counter-reset: list-counter;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ol li {
+  counter-increment: list-counter;
+  background-color: #f9f9f9; 
+  color: #707070; 
+  padding: 10px;
+  margin-bottom: 5px;
+  border: 1px solid #e0e0e0; 
+  border-radius: 4px;
+  position: relative;
+  padding-left: 50px;
+}
+
+ol li::before {
+  content: counter(list-counter) ".";
+  position: absolute;
+  left: 10px;
+  font-weight: bold;
+  color: #505050;
+}

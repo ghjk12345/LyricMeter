@@ -1,0 +1,13 @@
+<div *ngIf="!error">
+  <h1>Artist: {{artist}}</h1>
+  <highcharts-chart [Highcharts]="songsBarChart" [options]="songsBarChartOptions"
+                    [ngStyle]="{'width': '100%', 'height': calculatedHeight, 'display': 'block'}"
+                    role="img" aria-label="Bar chart presenting amount of words per song"></highcharts-chart>
+
+</div>
+<div *ngIf="error">
+  <h1>Could not find artist.</h1>
+  <p>
+    <a routerLink="/home" aria-label="Go back to the homepage">Go to the homepage</a>
+  </p>
+</div>
